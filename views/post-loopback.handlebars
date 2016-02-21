@@ -1,0 +1,13 @@
+<h1>This is a POST REQUEST</h1>
+<h2>You sent the following items in the URL string:</h2>
+<ul>
+  {{#each dataList}}
+    <li>{{this.name}}: {{this.value}}
+  {{/each}}
+</ul>
+<h2>You sent the following items in the body:</h2>
+<ul>
+  {{#each postList}}
+    <li>{{this.name}}: {{this.value}}
+  {{/each}}
+</ul>
