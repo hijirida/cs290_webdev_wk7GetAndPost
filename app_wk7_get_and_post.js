@@ -31,12 +31,12 @@ app.use(bodyParser.json());
 app.get('/', function(req, res) {
   var qParams = [];
   for (var p in req.query){
-    console.log("in loop: "+p);
+    //console.log("in loop: "+p);
     qParams.push({'name':p,'value':req.query[p]})
   }
   var context = {};
   context.dataList = qParams;
-  console.log("context.dataList = "+context.dataList);
+  //console.log("context.dataList = "+context.dataList);
   res.render('get-loopback', context);
 });
 
@@ -45,26 +45,29 @@ app.get('/', function(req, res) {
 **************/
 
 app.post('/', function(req, res) {
+  
+  /* parses the url string for key value pairs */
   var qParams1 = [];
   for (var p in req.query){
     //console.log("in loop: "+p);
     qParams1.push({'name':p,'value':req.query[p]})
   }
-  console.log(qParams1);
-  console.log(req.query);
+  //console.log(qParams1);
+  //console.log(req.query);
 
   var context = {};
   context.dataList = qParams1;
   //console.log("context.dataList = "+context.dataList);
-  //res.render('post-loopback', context);
   
+  /* parses the http body for key value pairs
+     req.body accesses either json objects or URL encoded key value pairs
+  */
   var qParams2 = [];
   for (var p in req.body){
     qParams2.push({'name':p,'value':req.body[p]})
   }
-  console.log(qParams2);
-  console.log(req.body);
-  //var context = {};
+  //console.log(qParams2);
+  //console.log(req.body);
   context.postList = qParams2;
   res.render('post-loopback', context);
 });
