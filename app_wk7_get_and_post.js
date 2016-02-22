@@ -26,49 +26,51 @@ app.use(bodyParser.json());
 
 /*************
  * This sets up the get request route
-**************/
+ * This is using the basic get route pattern from the lecture notes
+ **************/
 
 app.get('/', function(req, res) {
-  var qParams = [];
+  var param = [];
   for (var p in req.query){
     //console.log("in loop: "+p);
-    qParams.push({'name':p,'value':req.query[p]})
+    param.push({'name':p,'value':req.query[p]})
   }
   var context = {};
-  context.dataList = qParams;
+  context.dataList = params;
   //console.log("context.dataList = "+context.dataList);
   res.render('get-loopback', context);
 });
 
 /*************
  * This sets up the post reqeust route
-**************/
+ * This is using the basic post route pattern from the lecture notes
+ **************/
 
 app.post('/', function(req, res) {
   
   /* parses the url string for key value pairs */
-  var qParams1 = [];
+  var URLparam = [];
   for (var p in req.query){
     //console.log("in loop: "+p);
-    qParams1.push({'name':p,'value':req.query[p]})
+    URLparam.push({'name':p,'value':req.query[p]})
   }
-  //console.log(qParams1);
+  //console.log(URLaram1);
   //console.log(req.query);
 
   var context = {};
-  context.dataList = qParams1;
+  context.dataList = URLparam;
   //console.log("context.dataList = "+context.dataList);
   
   /* parses the http body for key value pairs
      req.body accesses either json objects or URL encoded key value pairs
   */
-  var qParams2 = [];
+  var Bodyparam = [];
   for (var p in req.body){
-    qParams2.push({'name':p,'value':req.body[p]})
+    Bodyparam.push({'name':p,'value':req.body[p]})
   }
-  //console.log(qParams2);
+  //console.log(Bodyparam);
   //console.log(req.body);
-  context.postList = qParams2;
+  context.postList = Bodyparam;
   res.render('post-loopback', context);
 });
 
@@ -76,6 +78,7 @@ app.post('/', function(req, res) {
 * NOT PART OF HOMEWORK
 * Just testing different routes and functions
 **************/
+/*
 app.get('/show-data',function(req,res){
   console.log("in app.get /show-data");
   //console.log(req);
@@ -108,6 +111,7 @@ app.get('/get-loopback',function(req,res){
   //console.log("context.dataList = "+context.dataList);
   res.render('get-loopback', context);
 });
+*/
 
 /*
 app.get('/get-loopback-improved',function(req,res){
